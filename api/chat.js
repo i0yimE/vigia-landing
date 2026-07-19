@@ -1,6 +1,6 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.0-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-flash-latest";
 
 const SYSTEM_INSTRUCTION = `Sos el asistente virtual de Vigía, un producto de demostración: una plataforma de observabilidad (logs, trazas, alertas y SLOs) para equipos de desarrollo que despliegan seguido.
 
