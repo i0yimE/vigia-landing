@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vigía — Observabilidad para equipos que despliegan a diario</title>
+  <meta name="description" content="Plataforma de observabilidad e incidentes: logs, trazas y alertas en un solo panel. Detectá el problema antes que tus usuarios. Gratis hasta 1M de eventos/mes, sin tarjeta." />
+  <meta property="og:title" content="Vigía — Observabilidad para equipos que despliegan a diario" />
+  <meta property="og:description" content="Logs, trazas y alertas en un solo panel. Detectá el incidente antes que tus usuarios." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 3 29 27H3Z" fill="none" stroke="%23ffb224" stroke-width="3" stroke-linejoin="round"/><circle cx="16" cy="20" r="3" fill="%23ffb224"/></svg>' />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="styles.css?v=20260718" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav" data-nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#" aria-label="Vigía — inicio">
+        <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 29 27H3Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="16" cy="20" r="3" fill="currentColor"/></svg>
+        <span>Vigía</span>
+      </a>
+      <nav class="nav-links" data-nav-links aria-label="Principal">
+        <a href="#producto">Producto</a>
+        <a href="#demo">Demo</a>
+        <a href="#precios">Precios</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-ghost nav-ghost" href="#demo">Ver demo</a>
+        <a class="btn btn-primary nav-cta" href="#precios">Empezar gratis</a>
+      </nav>
+      <button class="nav-burger" data-burger aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================ HERO ============================ -->
+    <section class="hero">
+      <div class="hero-gradient" data-mouse-gradient aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-inner container">
+        <p class="kicker reveal">Logs · Trazas · Alertas · SLOs</p>
+        <h1 class="hero-title reveal" style="--d:.06s">El sistema de observabilidad para equipos que despliegan <em>a diario</em>.</h1>
+        <p class="hero-sub reveal" style="--d:.12s">Vigía junta logs, trazas y alertas en un solo panel para que detectes el incidente antes que tus usuarios — sin pegar cinco herramientas ni descifrar la factura a fin de mes.</p>
+        <div class="hero-actions reveal" style="--d:.18s">
+          <a class="btn btn-primary btn-lg" href="#precios">Empezar gratis</a>
+          <a class="btn btn-ghost btn-lg" href="#demo">Ver demo en vivo</a>
+        </div>
+        <p class="hero-note reveal" style="--d:.24s">Gratis hasta 1M de eventos/mes · Sin tarjeta de crédito</p>
+
+        <!-- Mock del producto -->
+        <div class="hero-app reveal" style="--d:.3s">
+          <div class="app-chrome">
+            <span class="chrome-dot d-r"></span><span class="chrome-dot d-y"></span><span class="chrome-dot d-g"></span>
+            <span class="app-url">app.vigia.dev/panel</span>
+            <span class="app-live"><i class="live-dot"></i> en vivo</span>
+          </div>
+          <div class="app-body">
+            <aside class="app-side" aria-hidden="true">
+              <span class="side-item is-active">◈ Panel</span>
+              <span class="side-item">☰ Logs</span>
+              <span class="side-item">⌁ Trazas</span>
+              <span class="side-item">◉ Alertas</span>
+              <span class="side-item">◎ SLOs</span>
+            </aside>
+            <div class="app-main">
+              <div class="app-stats">
+                <div class="stat-tile">
+                  <span class="stat-label">Latencia p95</span>
+                  <span class="stat-value"><span data-count-to="142">142</span> ms</span>
+                  <span class="stat-delta down">▼ 12% esta semana</span>
+                </div>
+                <div class="stat-tile">
+                  <span class="stat-label">Tasa de error</span>
+                  <span class="stat-value">0,04 %</span>
+                  <span class="stat-delta down">▼ estable</span>
+                </div>
+                <div class="stat-tile">
+                  <span class="stat-label">Uptime 30 días</span>
+                  <span class="stat-value">99,98 %</span>
+                  <span class="stat-delta ok">● SLO cumplido</span>
+                </div>
+              </div>
+              <div class="app-chart">
+                <div class="chart-head">
+                  <span>checkout-api · latencia p95</span>
+                  <span class="chart-deploy">▲ deploy v2.14.0 — 14:02</span>
+                </div>
+                <svg viewBox="0 0 600 160" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#ffb224" stop-opacity=".28"/>
+                      <stop offset="1" stop-color="#ffb224" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path class="chart-area" d="M0,118 C40,110 60,96 90,100 C120,104 140,80 175,84 C210,88 230,60 265,66 C300,72 320,96 355,90 C390,84 410,50 445,44 C470,40 480,58 510,52 C540,46 570,60 600,54 L600,160 L0,160 Z" fill="url(#area)"/>
+                  <path class="chart-line" d="M0,118 C40,110 60,96 90,100 C120,104 140,80 175,84 C210,88 230,60 265,66 C300,72 320,96 355,90 C390,84 410,50 445,44 C470,40 480,58 510,52 C540,46 570,60 600,54" fill="none" stroke="#ffb224" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="445" y1="12" x2="445" y2="150" stroke="rgba(245,244,240,.25)" stroke-width="1" stroke-dasharray="3 4"/>
+                </svg>
+              </div>
+            </div>
+            <aside class="app-feed">
+              <div class="feed-title">Actividad</div>
+              <div class="feed-list" data-feed>
+                <div class="feed-row"><span class="feed-ico ok">✓</span><div><strong>Incidente resuelto</strong><span>p95 checkout · hace 2 min</span></div></div>
+                <div class="feed-row"><span class="feed-ico dep">▲</span><div><strong>Deploy v2.14.0</strong><span>caro@ · checkout-api</span></div></div>
+                <div class="feed-row"><span class="feed-ico warn">!</span><div><strong>Alerta reconocida</strong><span>tomás@ · hace 9 min</span></div></div>
+                <div class="feed-row"><span class="feed-ico ok">✓</span><div><strong>SLO al día</strong><span>pagos · 99,98 %</span></div></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ LOGOS ============================ -->
+    <section class="logos">
+      <div class="container">
+        <p class="logos-label reveal">Equipos que ya duermen mejor</p>
+        <div class="logos-row reveal" style="--d:.08s" aria-label="Clientes">
+          <span class="logo-mark l-kubik">KUBIK</span>
+          <span class="logo-mark l-nortada">nortada</span>
+          <span class="logo-mark l-datalia">Datalia·</span>
+          <span class="logo-mark l-herzio">HERZIO</span>
+          <span class="logo-mark l-orbita">órbita labs</span>
+          <span class="logo-mark l-fresno">FRESNO ▪</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ DEMO INTERACTIVO ============================ -->
+    <section class="demo section" id="demo">
+      <div class="container">
+        <p class="kicker reveal">Demo en vivo</p>
+        <h2 class="section-title reveal" style="--d:.06s">No te lo contamos.<br>Tocálo.</h2>
+        <p class="section-sub reveal" style="--d:.12s">Esta es la UI real de Vigía con datos simulados. Filtrá logs, recorré una traza, reconocé un incidente.</p>
+
+        <div class="demo-app reveal" style="--d:.18s">
+          <div class="demo-head">
+            <div class="demo-tabs" role="tablist" aria-label="Vistas del producto">
+              <button class="demo-tab is-active" role="tab" aria-selected="true" aria-controls="panel-logs" id="tab-logs" data-tab="logs">Logs</button>
+              <button class="demo-tab" role="tab" aria-selected="false" aria-controls="panel-trazas" id="tab-trazas" data-tab="trazas">Trazas</button>
+              <button class="demo-tab" role="tab" aria-selected="false" aria-controls="panel-alertas" id="tab-alertas" data-tab="alertas">Alertas</button>
+            </div>
+            <div class="demo-presence" aria-hidden="true">
+              <span class="avatar av-1">C</span>
+              <span class="avatar av-2">T</span>
+              <span class="presence-note">2 compañeros viendo esto</span>
+            </div>
+          </div>
+
+          <!-- Panel LOGS -->
+          <div class="demo-panel is-active" id="panel-logs" role="tabpanel" aria-labelledby="tab-logs" data-panel="logs">
+            <div class="log-toolbar">
+              <button class="chip is-active" data-filter="todos">Todos</button>
+              <button class="chip" data-filter="info">info</button>
+              <button class="chip" data-filter="warn">warn</button>
+              <button class="chip" data-filter="error">error</button>
+              <span class="log-count" data-log-count>· en vivo</span>
+            </div>
+            <div class="log-list" data-logstream>
+              <div class="log-row" data-level="info"><span class="log-time">14:03:12</span><span class="log-level lv-info">INFO</span><span class="log-msg">pago procesado <em>orden=ord_8f3k monto=4900</em></span></div>
+              <div class="log-row" data-level="info"><span class="log-time">14:03:14</span><span class="log-level lv-info">INFO</span><span class="log-msg">sesión iniciada <em>usuario=u_2291</em></span></div>
+              <div class="log-row" data-level="warn"><span class="log-time">14:03:17</span><span class="log-level lv-warn">WARN</span><span class="log-msg">reintento de pasarela <em>intento=2 espera=400ms</em></span></div>
+              <div class="log-row" data-level="error"><span class="log-time">14:03:21</span><span class="log-level lv-error">ERROR</span><span class="log-msg">timeout en pasarela <em>orden=ord_9a12 tras=3000ms</em></span></div>
+              <div class="log-row" data-level="info"><span class="log-time">14:03:22</span><span class="log-level lv-info">INFO</span><span class="log-msg">webhook entregado <em>evento=pago.confirmado</em></span></div>
+            </div>
+          </div>
+
+          <!-- Panel TRAZAS -->
+          <div class="demo-panel" id="panel-trazas" role="tabpanel" aria-labelledby="tab-trazas" data-panel="trazas" hidden>
+            <div class="trace-head">
+              <span class="trace-name">POST /checkout · <strong>412 ms</strong></span>
+              <span class="trace-id">traza a81f-22c4</span>
+            </div>
+            <div class="trace-list">
+              <div class="trace-row"><span class="trace-label">checkout-api</span><div class="trace-track"><div class="trace-bar tb-api" style="--l:0%;--w:100%"><span>412 ms</span></div></div></div>
+              <div class="trace-row"><span class="trace-label">auth.verificar</span><div class="trace-track"><div class="trace-bar tb-auth" style="--l:2%;--w:9%"><span>38 ms</span></div></div></div>
+              <div class="trace-row"><span class="trace-label">db.obtener_orden</span><div class="trace-track"><div class="trace-bar tb-db" style="--l:12%;--w:7%"><span>29 ms</span></div></div></div>
+              <div class="trace-row"><span class="trace-label">pasarela.cobrar</span><div class="trace-track"><div class="trace-bar tb-slow" style="--l:21%;--w:64%"><span>264 ms ← acá está el problema</span></div></div></div>
+              <div class="trace-row"><span class="trace-label">emails.confirmar</span><div class="trace-track"><div class="trace-bar tb-mail" style="--l:86%;--w:12%"><span>49 ms</span></div></div></div>
+            </div>
+            <p class="trace-hint">Vigía marca en ámbar el span más lento de cada traza. Sin buscar, sin adivinar.</p>
+          </div>
+
+          <!-- Panel ALERTAS -->
+          <div class="demo-panel" id="panel-alertas" role="tabpanel" aria-labelledby="tab-alertas" data-panel="alertas" hidden>
+            <div class="incident" data-incident>
+              <div class="incident-top">
+                <span class="incident-badge is-open" data-incident-badge><i class="live-dot"></i> Activa</span>
+                <span class="incident-sev">crítica</span>
+              </div>
+              <h3 class="incident-title">p95 &gt; 400 ms en checkout-api durante 5 min</h3>
+              <ul class="incident-log" data-incident-log>
+                <li><span>14:07</span> Alerta disparada — regla <code>latencia-checkout</code></li>
+                <li><span>14:07</span> Aviso enviado a <code>#incidentes</code> y guardia de pagos</li>
+                <li><span>14:08</span> Deploy v2.14.0 correlacionado automáticamente</li>
+              </ul>
+              <button class="btn btn-primary" data-ack>Reconocer incidente</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ BENTO FEATURES ============================ -->
+    <section class="features section" id="producto">
+      <div class="container">
+        <p class="kicker reveal">Producto</p>
+        <h2 class="section-title reveal" style="--d:.06s">Todo lo que mira tu guardia,<br>en un solo lugar.</h2>
+
+        <div class="bento">
+          <!-- 2x2 detección -->
+          <article class="bento-card b-2x2 reveal">
+            <div class="bento-visual">
+              <div class="anomaly">
+                <svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true">
+                  <line x1="0" y1="46" x2="400" y2="46" stroke="rgba(255,92,92,.5)" stroke-width="1" stroke-dasharray="4 4"/>
+                  <path class="chart-line" d="M0,110 C30,104 50,96 80,100 C110,104 130,86 165,90 C200,94 215,70 250,60 C285,50 300,34 330,30 C355,27 375,38 400,34" fill="none" stroke="#ffb224" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle class="anomaly-dot" cx="330" cy="30" r="5" fill="#ff5c5c"/>
+                </svg>
+                <span class="anomaly-tag">umbral p95 · 400 ms</span>
+              </div>
+            </div>
+            <h3>Detectá antes de que se queje el primer usuario</h3>
+            <p>Detección de anomalías sobre tus métricas clave, con el deploy correlacionado al lado. Los equipos que migran a Vigía bajan su MTTR un <strong>38 % en el primer trimestre</strong>.</p>
+          </article>
+
+          <!-- 2x1 deploys -->
+          <article class="bento-card b-2x1 reveal" style="--d:.06s">
+            <div class="bento-visual">
+              <div class="deploy-line">
+                <span class="deploy-node ok" title="v2.12"></span>
+                <span class="deploy-node ok" title="v2.13"></span>
+                <span class="deploy-node warn" title="v2.14"></span>
+                <span class="deploy-node next"></span>
+              </div>
+              <p class="deploy-caption">v2.14.0 · +180 ms p95 · <strong>candidato a rollback</strong></p>
+            </div>
+            <h3>Cada pico, atado a su deploy</h3>
+            <p>Vigía cruza deploys con métricas: sabés qué versión rompió qué, en segundos y sin arqueología en Git.</p>
+          </article>
+
+          <!-- 1x1 alertas -->
+          <article class="bento-card b-1x1 reveal" style="--d:.12s">
+            <div class="bento-visual">
+              <div class="quiet">
+                <span class="quiet-num">3</span>
+                <span class="quiet-txt">alertas hoy<br><strong>0 de ruido</strong></span>
+              </div>
+            </div>
+            <h3>Alertas que no gritan de más</h3>
+            <p>Reglas con contexto y silencios inteligentes: <strong>62 % menos pings</strong> a la guardia.</p>
+          </article>
+
+          <!-- 1x1 SLO -->
+          <article class="bento-card b-1x1 reveal" style="--d:.18s">
+            <div class="bento-visual">
+              <div class="slo-ring" role="img" aria-label="SLO 99,98 por ciento cumplido">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(245,244,240,.1)" stroke-width="8"/>
+                  <circle class="slo-arc" cx="50" cy="50" r="42" fill="none" stroke="#3ddc84" stroke-width="8" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" transform="rotate(-90 50 50)"/>
+                </svg>
+                <span class="slo-val">99,98 %</span>
+              </div>
+            </div>
+            <h3>SLOs sin planilla</h3>
+            <p>Presupuesto de error visible para todo el equipo, no solo para la persona que armó el dashboard.</p>
+          </article>
+
+          <!-- 1x2 integraciones -->
+          <article class="bento-card b-1x2 reveal" style="--d:.1s">
+            <div class="bento-visual">
+              <div class="integ-grid">
+                <span class="integ">Slack</span>
+                <span class="integ">GitHub</span>
+                <span class="integ">Kubernetes</span>
+                <span class="integ">Terraform</span>
+                <span class="integ">PagerDuty</span>
+                <span class="integ">AWS</span>
+                <span class="integ">Vercel</span>
+                <span class="integ">OpenTelemetry</span>
+              </div>
+            </div>
+            <h3>Se enchufa a lo que ya usás</h3>
+            <p>Compatible con OpenTelemetry de punta a punta: instrumentás una vez, sin lock-in. Si mañana te vas, tus datos se van con vos.</p>
+          </article>
+
+          <!-- 2x1 búsqueda -->
+          <article class="bento-card b-2x1 reveal" style="--d:.14s">
+            <div class="bento-visual">
+              <div class="search-mock">
+                <span class="search-ico">⌕</span>
+                <span class="search-type" data-typing>servicio:checkout nivel:error orden:ord_9a12</span>
+                <span class="search-caret"></span>
+              </div>
+              <p class="deploy-caption">1.2 mil millones de eventos · respuesta en <strong>0,3 s</strong></p>
+            </div>
+            <h3>Buscar un log deja de ser un plan de tarde</h3>
+            <p>Búsqueda estructurada sobre todos tus servicios. Del síntoma a la línea exacta en menos de un minuto.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ MÓDULOS ============================ -->
+    <section class="modules section">
+      <div class="container">
+        <p class="kicker reveal">Cómo se ve en tu código</p>
+        <h2 class="section-title reveal" style="--d:.06s">Cinco líneas y estás adentro.</h2>
+
+        <!-- Módulo 1: Logs -->
+        <div class="module reveal">
+          <div class="module-text">
+            <p class="module-num">01 · Logs</p>
+            <h3>Logs estructurados desde el primer <code>init</code></h3>
+            <p>SDKs para Node, Python, Go y Rust. Cada log llega con servicio, entorno y versión — filtrable al instante, sin regex heroicas.</p>
+            <a class="text-link" href="#precios">Empezar con logs →</a>
+          </div>
+          <div class="module-code">
+            <div class="code-head"><span>app.js</span><span class="code-lang">Node</span></div>
+            <pre><code><span class="tk-k">const</span> vigia = <span class="tk-f">require</span>(<span class="tk-s">"@vigia/node"</span>);
+
+vigia.<span class="tk-f">init</span>({
+  servicio: <span class="tk-s">"checkout-api"</span>,
+  entorno: <span class="tk-s">"produccion"</span>,
+  version: process.env.GIT_SHA,
+});
+
+log.<span class="tk-f">info</span>(<span class="tk-s">"pago procesado"</span>, { orden: <span class="tk-s">"ord_8f3k"</span>, monto: <span class="tk-n">4900</span> });</code></pre>
+          </div>
+        </div>
+
+        <!-- Módulo 2: Trazas -->
+        <div class="module is-flipped reveal">
+          <div class="module-text">
+            <p class="module-num">02 · Trazas</p>
+            <h3>Un decorador, la traza completa</h3>
+            <p>Instrumentación automática de HTTP, base de datos y colas. La cascada te muestra dónde se van los milisegundos, resaltando el span más lento.</p>
+            <a class="text-link" href="#precios">Empezar con trazas →</a>
+          </div>
+          <div class="module-code">
+            <div class="code-head"><span>ordenes.py</span><span class="code-lang">Python</span></div>
+            <pre><code><span class="tk-k">from</span> vigia <span class="tk-k">import</span> trazar
+
+<span class="tk-d">@trazar</span>(nombre=<span class="tk-s">"cobrar_orden"</span>)
+<span class="tk-k">def</span> <span class="tk-f">cobrar_orden</span>(orden_id: <span class="tk-k">str</span>):
+    orden = db.<span class="tk-f">obtener</span>(orden_id)     <span class="tk-c"># span: db.query · 29 ms</span>
+    pasarela.<span class="tk-f">cobrar</span>(orden.total)     <span class="tk-c"># span: http.post · 264 ms</span>
+    <span class="tk-k">return</span> <span class="tk-f">confirmar</span>(orden)</code></pre>
+          </div>
+        </div>
+
+        <!-- Módulo 3: Alertas -->
+        <div class="module reveal">
+          <div class="module-text">
+            <p class="module-num">03 · Alertas</p>
+            <h3>Alertas como código, revisables en PR</h3>
+            <p>Las reglas viven en tu repo. Se versionan, se revisan y se silencian solas durante un deploy — se acabó el "¿quién tocó esta alerta?".</p>
+            <a class="text-link" href="#precios">Empezar con alertas →</a>
+          </div>
+          <div class="module-code">
+            <div class="code-head"><span>alertas/checkout.yml</span><span class="code-lang">YAML</span></div>
+            <pre><code><span class="tk-a">alerta:</span> latencia-checkout
+<span class="tk-a">si:</span> p95(checkout-api) &gt; <span class="tk-n">400ms</span> durante <span class="tk-n">5m</span>
+<span class="tk-a">severidad:</span> critica
+<span class="tk-a">avisar:</span>
+  - <span class="tk-a">slack:</span> <span class="tk-s">"#incidentes"</span>
+  - <span class="tk-a">guardia:</span> equipo-pagos
+<span class="tk-a">silenciar_si:</span> deploy_en_curso</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PRUEBA SOCIAL ============================ -->
+    <section class="proof section">
+      <div class="container">
+        <div class="proof-stats reveal">
+          <div class="proof-stat"><span class="proof-num"><span data-count-to="2400" data-format="miles">2.400</span></span><span class="proof-label">equipos en producción</span></div>
+          <div class="proof-stat"><span class="proof-num"><span data-count-to="99.99" data-decimals="2">99,99</span> %</span><span class="proof-label">uptime de la plataforma</span></div>
+          <div class="proof-stat"><span class="proof-num"><span data-count-to="9">9</span> min</span><span class="proof-label">MTTR mediano de clientes</span></div>
+          <div class="proof-stat"><span class="proof-num"><span data-count-to="4.8" data-decimals="1">4,8</span> ★</span><span class="proof-label">en G2, 210 reseñas</span></div>
+        </div>
+
+        <div class="testimonials">
+          <figure class="testimonial reveal">
+            <p class="testimonial-metric">MTTR de 45 a <strong>9 minutos</strong></p>
+            <blockquote>“Antes de Vigía, un incidente era una hora entre Slack, dashboards y logs sueltos. Ahora la alerta llega con el deploy culpable señalado.”</blockquote>
+            <figcaption><span class="avatar av-1">M</span><div><strong>Marina Suárez</strong><span>Head of Platform · Kubik</span></div></figcaption>
+          </figure>
+          <figure class="testimonial reveal" style="--d:.08s">
+            <p class="testimonial-metric"><strong>–42 %</strong> de tickets de soporte</p>
+            <blockquote>“Detectamos las degradaciones antes de que los usuarios escriban. El canal de soporte se vació solo.”</blockquote>
+            <figcaption><span class="avatar av-2">J</span><div><strong>Joaquín Peralta</strong><span>CTO · Datalia</span></div></figcaption>
+          </figure>
+          <figure class="testimonial reveal" style="--d:.16s">
+            <p class="testimonial-metric"><strong>3.100 horas</strong> ahorradas al año</p>
+            <blockquote>“Apagamos tres herramientas y una planilla de SLOs. El equipo de guardia por fin confía en las alertas que recibe.”</blockquote>
+            <figcaption><span class="avatar av-3">L</span><div><strong>Lucía Ferrer</strong><span>SRE Lead · Herzio</span></div></figcaption>
+          </figure>
+        </div>
+
+        <div class="review-badges reveal">
+          <span class="badge-chip">★ 4,8 / 5 en G2</span>
+          <span class="badge-chip">★ 4,7 / 5 en Capterra</span>
+          <span class="badge-chip">Líder — Observability, invierno 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PRICING ============================ -->
+    <section class="pricing section" id="precios">
+      <div class="container">
+        <p class="kicker reveal">Precios</p>
+        <h2 class="section-title reveal" style="--d:.06s">Transparente, como tus métricas.</h2>
+        <p class="section-sub reveal" style="--d:.12s">Sin tarjeta de crédito para empezar. Sin llamada obligatoria con ventas, salvo que quieras Enterprise.</p>
+
+        <div class="price-toggle reveal" style="--d:.16s">
+          <button class="toggle-opt is-active" data-cycle="mensual" aria-pressed="true">Mensual</button>
+          <button class="toggle-opt" data-cycle="anual" aria-pressed="false">Anual <em>–20 %</em></button>
+        </div>
+
+        <div class="plans">
+          <article class="plan reveal">
+            <h3>Free</h3>
+            <p class="plan-price"><strong>US$ 0</strong></p>
+            <p class="plan-for">Para proyectos personales y equipos que arrancan.</p>
+            <ul>
+              <li>1M de eventos / mes</li>
+              <li>3 usuarios</li>
+              <li>Retención de 7 días</li>
+              <li>Alertas a Slack y email</li>
+            </ul>
+            <a class="btn btn-ghost btn-block" href="#cta">Empezar gratis</a>
+          </article>
+
+          <article class="plan is-featured reveal" style="--d:.08s">
+            <span class="plan-tag">Más elegido</span>
+            <h3>Pro</h3>
+            <p class="plan-price"><strong>US$ <span data-price data-monthly="29" data-annual="23">29</span></strong> / usuario / mes</p>
+            <p class="plan-cycle" data-cycle-note>facturado mensualmente</p>
+            <p class="plan-for">Para equipos que despliegan a diario y hacen guardias.</p>
+            <ul>
+              <li>Eventos ilimitados (fair use)</li>
+              <li>Usuarios ilimitados</li>
+              <li>Retención de 30 días</li>
+              <li>Alertas como código + guardias</li>
+              <li>SSO con Google y GitHub</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="#cta">Probar 14 días gratis</a>
+          </article>
+
+          <article class="plan reveal" style="--d:.16s">
+            <h3>Enterprise</h3>
+            <p class="plan-price"><strong>A medida</strong></p>
+            <p class="plan-for">Para organizaciones con requisitos de compliance.</p>
+            <ul>
+              <li>SSO / SAML + SCIM</li>
+              <li>SLA de 99,99 % con créditos</li>
+              <li>Residencia de datos (UE / EE.UU.)</li>
+              <li>Retención a medida + self-hosted</li>
+              <li>Soporte con ingeniería dedicada</li>
+            </ul>
+            <a class="btn btn-ghost btn-block" href="#cta">Hablar con ventas</a>
+          </article>
+        </div>
+        <p class="pricing-note reveal">14 días de prueba en Pro, sin tarjeta. Cancelás desde el panel, sin email a nadie.</p>
+      </div>
+    </section>
+
+    <!-- ============================ FAQ ============================ -->
+    <section class="faq section" id="faq">
+      <div class="container container-narrow">
+        <p class="kicker reveal">Preguntas frecuentes</p>
+        <h2 class="section-title reveal" style="--d:.06s">Lo que tu equipo de seguridad va a preguntar.</h2>
+
+        <div class="faq-list reveal" style="--d:.12s">
+          <details>
+            <summary>¿Tienen SSO / SAML?<span class="faq-ico" aria-hidden="true"></span></summary>
+            <p>Sí. El plan Pro incluye SSO con Google y GitHub. SAML 2.0 y aprovisionamiento SCIM (Okta, Entra ID) están disponibles en Enterprise.</p>
+          </details>
+          <details>
+            <summary>¿Están certificados en SOC 2?<span class="faq-ico" aria-hidden="true"></span></summary>
+            <p>Contamos con SOC 2 Type II e ISO 27001. El informe está disponible bajo NDA desde el portal de confianza, sin pasar por ventas.</p>
+          </details>
+          <details>
+            <summary>¿Cumplen con GDPR? ¿Dónde viven mis datos?<span class="faq-ico" aria-hidden="true"></span></summary>
+            <p>Sí. Podés elegir residencia de datos en la UE o EE.UU. Firmamos DPA estándar y los datos se cifran en tránsito y en reposo. En Enterprise también ofrecemos despliegue self-hosted.</p>
+          </details>
+          <details>
+            <summary>¿Qué SLA de uptime ofrecen?<span class="faq-ico" aria-hidden="true"></span></summary>
+            <p>La plataforma opera con 99,99 % de uptime histórico, publicado en nuestra página de estado. Enterprise incluye SLA contractual con créditos automáticos.</p>
+          </details>
+          <details>
+            <summary>¿Es difícil migrar desde Datadog o Grafana?<span class="faq-ico" aria-hidden="true"></span></summary>
+            <p>Somos compatibles con OpenTelemetry, así que en la mayoría de los casos solo cambiás el endpoint del exporter. Tenemos guías de migración y un equipo que ya la hizo decenas de veces.</p>
+          </details>
+          <details>
+            <summary>¿Qué pasa cuando me quedo sin eventos en el plan Free?<span class="faq-ico" aria-hidden="true"></span></summary>
+            <p>Nada dramático: seguimos recibiendo tus datos 48 hs con degradación suave y te avisamos antes. Nunca cortamos alertas activas por límite de plan.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CTA FINAL ============================ -->
+    <section class="cta section" id="cta">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="container">
+        <h2 class="cta-title reveal">Tu próximo incidente<br>va a durar 9 minutos.</h2>
+        <p class="section-sub reveal" style="--d:.08s">Empezá gratis con 1M de eventos por mes. Instrumentás en una tarde, sin tarjeta y sin llamada.</p>
+        <div class="hero-actions reveal" style="--d:.14s">
+          <a class="btn btn-primary btn-lg" href="#precios">Empezar gratis</a>
+          <a class="btn btn-ghost btn-lg" href="#demo">Ver demo en vivo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="#" aria-label="Vigía — inicio">
+          <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 29 27H3Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="16" cy="20" r="3" fill="currentColor"/></svg>
+          <span>Vigía</span>
+        </a>
+        <p>Observabilidad para equipos que despliegan a diario.</p>
+        <p class="footer-status"><i class="live-dot ok-dot"></i> Todos los sistemas operativos</p>
+      </div>
+      <nav class="footer-col" aria-label="Producto">
+        <h4>Producto</h4>
+        <a href="#producto">Features</a>
+        <a href="#demo">Demo en vivo</a>
+        <a href="#precios">Precios</a>
+        <a href="#faq">Seguridad</a>
+      </nav>
+      <nav class="footer-col" aria-label="Recursos">
+        <h4>Recursos</h4>
+        <a href="#">Documentación</a>
+        <a href="#">Guías de migración</a>
+        <a href="#">Página de estado</a>
+        <a href="#">Changelog</a>
+      </nav>
+      <nav class="footer-col" aria-label="Empresa">
+        <h4>Empresa</h4>
+        <a href="#">Sobre Vigía</a>
+        <a href="#">Blog</a>
+        <a href="#">Portal de confianza</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Vigía · Sitio de demostración — producto ficticio</span>
+      <span>Términos · Privacidad · DPA</span>
+    </div>
+  </footer>
+
+  <script defer src="lib/gsap.min.js?v=20260718"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260718"></script>
+  <script defer src="lib/manifest.js?v=20260718"></script>
+  <script defer src="main.js?v=20260718"></script>
+</body>
+</html>
