@@ -1,9 +1,0 @@
-{
-  "name": "vigia-landing",
-  "private": true,
-  "version": "1.0.0",
-  "description": "Landing page de demo para Vigía (SaaS de observabilidad ficticio)",
-  "dependencies": {
-    "@google/generative-ai": "^0.21.0"
-  }
-}
