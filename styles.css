@@ -1149,12 +1149,64 @@ code { font-family: var(--mono); font-size: 0.92em; }
   font-size: 0.85rem;
 }
 .plan .btn { margin-top: auto; }
+.plan .btn:disabled { opacity: 0.65; pointer-events: none; }
+.checkout-error {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--err);
+  text-align: center;
+}
 .pricing-note {
   text-align: center;
   font-size: 0.86rem;
   color: var(--dim);
   margin-top: 1.8rem;
 }
+.pricing-testmode {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--dim);
+  margin-top: 0.6rem;
+}
+.pricing-testmode code {
+  background: rgba(245, 244, 240, 0.06);
+  padding: 0.05rem 0.4rem;
+  border-radius: 5px;
+  color: var(--mute);
+}
+
+/* Banner de resultado del checkout (redirección de vuelta desde Stripe) */
+.checkout-banner {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-16px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  max-width: min(480px, calc(100vw - 2rem));
+  padding: 0.85rem 1.1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  border: 1px solid var(--line-2);
+  background: var(--bg-card);
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+.checkout-banner.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+.checkout-banner.is-success { border-color: rgba(61, 220, 132, 0.4); }
+.checkout-banner.is-cancelled { border-color: rgba(255, 178, 36, 0.35); }
+.checkout-banner-close {
+  flex: 0 0 auto;
+  color: var(--dim);
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.2rem;
+}
+.checkout-banner-close:hover { color: var(--ink); }
 
 /* =============================================================
    13. FAQ

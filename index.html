@@ -454,7 +454,8 @@ log.<span class="tk-f">info</span>(<span class="tk-s">"pago procesado"</span>, {
               <li>Alertas como código + guardias</li>
               <li>SSO con Google y GitHub</li>
             </ul>
-            <a class="btn btn-primary btn-block" href="#cta">Probar 14 días gratis</a>
+            <button class="btn btn-primary btn-block" type="button" data-checkout="pro">Probar 14 días gratis</button>
+            <p class="checkout-error" data-checkout-error hidden></p>
           </article>
 
           <article class="plan reveal" style="--d:.16s">
@@ -472,6 +473,7 @@ log.<span class="tk-f">info</span>(<span class="tk-s">"pago procesado"</span>, {
           </article>
         </div>
         <p class="pricing-note reveal">14 días de prueba en Pro, sin tarjeta. Cancelás desde el panel, sin email a nadie.</p>
+        <p class="pricing-testmode reveal">Checkout en modo prueba de Stripe — no se realizan cobros reales. Podés usar la tarjeta de test <code>4242 4242 4242 4242</code>, cualquier fecha futura y cualquier CVC.</p>
       </div>
     </section>
 
@@ -592,5 +594,6 @@ log.<span class="tk-f">info</span>(<span class="tk-s">"pago procesado"</span>, {
   <script defer src="lib/manifest.js?v=20260719"></script>
   <script defer src="main.js?v=20260719"></script>
   <script defer src="chat.js?v=20260719"></script>
+  <script defer src="checkout.js?v=20260719"></script>
 </body>
 </html>
