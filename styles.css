@@ -1150,12 +1150,6 @@ code { font-family: var(--mono); font-size: 0.92em; }
 }
 .plan .btn { margin-top: auto; }
 .plan .btn:disabled { opacity: 0.65; pointer-events: none; }
-.checkout-error {
-  margin-top: 0.6rem;
-  font-size: 0.82rem;
-  color: var(--err);
-  text-align: center;
-}
 .pricing-note {
   text-align: center;
   font-size: 0.86rem;
@@ -1175,38 +1169,87 @@ code { font-family: var(--mono); font-size: 0.92em; }
   color: var(--mute);
 }
 
-/* Banner de resultado del checkout (redirección de vuelta desde Stripe) */
-.checkout-banner {
-  position: fixed;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(-16px);
-  z-index: 200;
+/* Modal de checkout simulado (sin pasarela real) */
+dialog.checkout-modal {
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  color: var(--ink);
+  padding: 0;
+  width: min(420px, calc(100vw - 2rem));
+  box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.9);
+}
+dialog.checkout-modal::backdrop {
+  background: rgba(5, 5, 7, 0.62);
+  backdrop-filter: blur(4px);
+}
+.checkout-modal-head {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  max-width: min(480px, calc(100vw - 2rem));
-  padding: 0.85rem 1.1rem;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  line-height: 1.4;
+  justify-content: space-between;
+  padding: 1.1rem 1.3rem;
+  border-bottom: 1px solid var(--line);
+}
+.checkout-modal-head h3 { font-size: 1.05rem; }
+.checkout-modal-close { color: var(--dim); padding: 0.2rem; border-radius: 6px; }
+.checkout-modal-close:hover { color: var(--ink); }
+.checkout-modal-body {
+  padding: 1.2rem 1.3rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.checkout-plan-summary {
+  font-size: 0.88rem;
+  color: var(--mute);
+  background: rgba(255, 178, 36, 0.08);
+  border: 1px solid rgba(255, 178, 36, 0.25);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+}
+.checkout-modal-body label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--mute);
+}
+.checkout-modal-body input {
+  background: rgba(0, 0, 0, 0.25);
   border: 1px solid var(--line-2);
-  background: var(--bg-card);
-  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8);
-  opacity: 0;
-  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+  border-radius: 8px;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.92rem;
+  color: var(--ink);
+  font-family: var(--mono);
 }
-.checkout-banner.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
-.checkout-banner.is-success { border-color: rgba(61, 220, 132, 0.4); }
-.checkout-banner.is-cancelled { border-color: rgba(255, 178, 36, 0.35); }
-.checkout-banner-close {
-  flex: 0 0 auto;
-  color: var(--dim);
-  font-size: 1.1rem;
-  line-height: 1;
-  padding: 0.2rem;
+.checkout-modal-body input:focus { border-color: rgba(255, 178, 36, 0.5); }
+.checkout-modal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+.checkout-modal-disclaimer { font-size: 0.74rem; color: var(--dim); }
+.checkout-modal-form .btn {
+  margin: 1.1rem 1.3rem 1.3rem;
+  width: calc(100% - 2.6rem);
 }
-.checkout-banner-close:hover { color: var(--ink); }
+.checkout-modal-success {
+  padding: 2.2rem 1.6rem 1.8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+.checkout-success-icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(61, 220, 132, 0.14);
+  color: var(--ok);
+  font-size: 1.6rem;
+  display: grid;
+  place-items: center;
+}
+.checkout-modal-success h3 { font-size: 1.1rem; }
+.checkout-modal-success p { font-size: 0.88rem; color: var(--mute); max-width: 32ch; }
+.checkout-modal-success .btn { width: 100%; margin-top: 0.6rem; }
 
 /* =============================================================
    13. FAQ

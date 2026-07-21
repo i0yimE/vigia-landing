@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=20260718" />
+  <link rel="stylesheet" href="styles.css?v=20260722" />
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -455,7 +455,6 @@ log.<span class="tk-f">info</span>(<span class="tk-s">"pago procesado"</span>, {
               <li>SSO con Google y GitHub</li>
             </ul>
             <button class="btn btn-primary btn-block" type="button" data-checkout="pro">Probar 14 días gratis</button>
-            <p class="checkout-error" data-checkout-error hidden></p>
           </article>
 
           <article class="plan reveal" style="--d:.16s">
@@ -473,7 +472,7 @@ log.<span class="tk-f">info</span>(<span class="tk-s">"pago procesado"</span>, {
           </article>
         </div>
         <p class="pricing-note reveal">14 días de prueba en Pro, sin tarjeta. Cancelás desde el panel, sin email a nadie.</p>
-        <p class="pricing-testmode reveal">Checkout en modo prueba de Stripe — no se realizan cobros reales. Podés usar la tarjeta de test <code>4242 4242 4242 4242</code>, cualquier fecha futura y cualquier CVC.</p>
+        <p class="pricing-testmode reveal">El checkout del plan Pro es una simulación de demo — no se procesa ningún pago real ni se guarda ningún dato. Podés escribir cualquier valor en el formulario.</p>
       </div>
     </section>
 
@@ -565,6 +564,43 @@ log.<span class="tk-f">info</span>(<span class="tk-s">"pago procesado"</span>, {
     </div>
   </footer>
 
+  <!-- ============================ CHECKOUT (simulado) ============================ -->
+  <dialog class="checkout-modal" data-checkout-modal aria-labelledby="checkout-modal-title">
+    <form class="checkout-modal-form" data-checkout-form>
+      <div class="checkout-modal-head">
+        <h3 id="checkout-modal-title">Probar Vigía Pro</h3>
+        <button type="button" class="checkout-modal-close" data-checkout-close aria-label="Cerrar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="checkout-modal-body">
+        <p class="checkout-plan-summary" data-checkout-summary>Plan Pro · US$29/usuario/mes · 14 días gratis</p>
+        <label>Nombre en la tarjeta
+          <input type="text" placeholder="Nombre Apellido" autocomplete="off" required />
+        </label>
+        <label>Número de tarjeta
+          <input type="text" placeholder="4242 4242 4242 4242" inputmode="numeric" maxlength="19" autocomplete="off" data-cc-number required />
+        </label>
+        <div class="checkout-modal-row">
+          <label>Vencimiento
+            <input type="text" placeholder="MM/AA" maxlength="5" autocomplete="off" required />
+          </label>
+          <label>CVC
+            <input type="text" placeholder="123" maxlength="4" inputmode="numeric" autocomplete="off" required />
+          </label>
+        </div>
+        <p class="checkout-modal-disclaimer">Simulación de demo: no se procesa ningún pago real ni se guarda ningún dato. Podés escribir cualquier valor.</p>
+      </div>
+      <button type="submit" class="btn btn-primary" data-checkout-submit>Confirmar prueba gratuita</button>
+    </form>
+    <div class="checkout-modal-success" data-checkout-success hidden>
+      <div class="checkout-success-icon">✓</div>
+      <h3>Tu prueba de 14 días está activada</h3>
+      <p>Es una simulación de demo — no se realizó ningún cargo ni se guardó ningún dato.</p>
+      <button type="button" class="btn btn-ghost" data-checkout-done>Cerrar</button>
+    </div>
+  </dialog>
+
   <!-- ============================ CHAT ============================ -->
   <button class="chat-toggle" data-chat-toggle aria-label="Abrir el asistente de Vigía" aria-expanded="false">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v10H8l-4 4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
@@ -594,6 +630,6 @@ log.<span class="tk-f">info</span>(<span class="tk-s">"pago procesado"</span>, {
   <script defer src="lib/manifest.js?v=20260719"></script>
   <script defer src="main.js?v=20260719"></script>
   <script defer src="chat.js?v=20260719"></script>
-  <script defer src="checkout.js?v=20260719"></script>
+  <script defer src="checkout.js?v=20260722"></script>
 </body>
 </html>
