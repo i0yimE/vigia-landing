@@ -1176,12 +1176,27 @@ dialog.checkout-modal {
   background: var(--bg-card);
   color: var(--ink);
   padding: 0;
-  width: min(420px, calc(100vw - 2rem));
+  width: min(440px, calc(100vw - 2rem));
+  max-height: min(92vh, 720px);
+  overflow-y: auto;
   box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.9);
 }
 dialog.checkout-modal::backdrop {
   background: rgba(5, 5, 7, 0.62);
   backdrop-filter: blur(4px);
+}
+.checkout-sim-badge {
+  margin: 0;
+  padding: 0.5rem 1.3rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--warn);
+  background: rgba(255, 178, 36, 0.1);
+  border-bottom: 1px solid rgba(255, 178, 36, 0.25);
 }
 .checkout-modal-head {
   display: flex;
@@ -1197,24 +1212,111 @@ dialog.checkout-modal::backdrop {
   padding: 1.2rem 1.3rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 1rem;
 }
 .checkout-plan-summary {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--mute);
   background: rgba(255, 178, 36, 0.08);
   border: 1px solid rgba(255, 178, 36, 0.25);
   border-radius: 8px;
   padding: 0.6rem 0.8rem;
 }
-.checkout-modal-body label {
+
+/* Tarjeta visual en vivo */
+.cc-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.586;
+  max-height: 170px;
+  perspective: 1000px;
+}
+.cc-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
+  backface-visibility: hidden;
+  transition: transform 0.5s var(--ease-out);
+  background: linear-gradient(135deg, #23252b, #14151a 65%);
+  border: 1px solid rgba(245, 244, 240, 0.1);
+  box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.8);
+  color: var(--ink);
+}
+.cc-preview[data-brand="visa"] .cc-front { background: linear-gradient(135deg, #1a2a4a, #0f1830 65%); }
+.cc-preview[data-brand="mastercard"] .cc-front { background: linear-gradient(135deg, #2a1a1a, #1a1010 65%); }
+.cc-preview[data-brand="amex"] .cc-front { background: linear-gradient(135deg, #1a2c2a, #0f1c1a 65%); }
+.cc-preview[data-brand="discover"] .cc-front { background: linear-gradient(135deg, #2a230f, #1a1608 65%); }
+.cc-front { display: flex; flex-direction: column; justify-content: space-between; }
+.cc-back { transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; gap: 0.9rem; }
+.cc-preview.is-flipped .cc-front { transform: rotateY(180deg); }
+.cc-preview.is-flipped .cc-back { transform: rotateY(360deg); }
+.cc-brand-label {
+  align-self: flex-end;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--mute);
+}
+.cc-chip {
+  width: 34px; height: 24px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #d9c179, #a9862f);
+  display: block;
+}
+.cc-number-line {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+.cc-bottom-row { display: flex; justify-content: space-between; gap: 1rem; }
+.cc-mini-label {
+  display: block;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+  margin-bottom: 0.15rem;
+}
+.cc-holder-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 20ch;
+}
+.cc-stripe {
+  display: block;
+  height: 38px;
+  margin: 0 -1.2rem;
+  background: #0c0c0e;
+}
+.cc-cvc-box {
+  align-self: flex-end;
+  background: rgba(245, 244, 240, 0.92);
+  color: #1a1a1a;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cc-cvc-box .cc-mini-label { color: #6b6b6b; margin: 0; }
+
+/* Campos del formulario */
+.checkout-field { display: flex; flex-direction: column; gap: 0.35rem; }
+.checkout-field label {
   font-size: 0.82rem;
   color: var(--mute);
 }
-.checkout-modal-body input {
+.checkout-field input,
+.input-with-icon input {
+  width: 100%;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid var(--line-2);
   border-radius: 8px;
@@ -1223,13 +1325,25 @@ dialog.checkout-modal::backdrop {
   color: var(--ink);
   font-family: var(--mono);
 }
-.checkout-modal-body input:focus { border-color: rgba(255, 178, 36, 0.5); }
+.checkout-field input:focus { border-color: rgba(255, 178, 36, 0.5); }
+.input-with-icon { position: relative; }
+.input-with-icon input { padding-right: 2.6rem; }
+.cc-brand-icon { position: absolute; right: 0.7rem; top: 50%; transform: translateY(-50%); color: var(--mute); }
+.field-error { font-size: 0.76rem; color: var(--err); }
 .checkout-modal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
 .checkout-modal-disclaimer { font-size: 0.74rem; color: var(--dim); }
+.checkout-modal-disclaimer code {
+  background: rgba(245, 244, 240, 0.06);
+  padding: 0.05rem 0.35rem;
+  border-radius: 5px;
+  color: var(--mute);
+}
 .checkout-modal-form .btn {
-  margin: 1.1rem 1.3rem 1.3rem;
+  margin: 1.2rem 1.3rem 1.3rem;
   width: calc(100% - 2.6rem);
 }
+
+/* Vista de éxito + recibo */
 .checkout-modal-success {
   padding: 2.2rem 1.6rem 1.8rem;
   text-align: center;
@@ -1239,17 +1353,38 @@ dialog.checkout-modal::backdrop {
   gap: 0.7rem;
 }
 .checkout-success-icon {
-  width: 52px; height: 52px;
+  width: 56px; height: 56px;
   border-radius: 50%;
   background: rgba(61, 220, 132, 0.14);
   color: var(--ok);
-  font-size: 1.6rem;
   display: grid;
   place-items: center;
 }
+.success-ring { stroke-dasharray: 82; stroke-dashoffset: 82; animation: ringDraw 0.5s var(--ease-out) forwards; }
+.success-check { stroke-dasharray: 20; stroke-dashoffset: 20; animation: checkDraw 0.35s var(--ease-out) 0.45s forwards; }
+@keyframes ringDraw { to { stroke-dashoffset: 0; } }
+@keyframes checkDraw { to { stroke-dashoffset: 0; } }
 .checkout-modal-success h3 { font-size: 1.1rem; }
-.checkout-modal-success p { font-size: 0.88rem; color: var(--mute); max-width: 32ch; }
-.checkout-modal-success .btn { width: 100%; margin-top: 0.6rem; }
+.checkout-receipt {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--mute);
+}
+.receipt-row strong { color: var(--ink); font-weight: 600; }
+.checkout-sim-note { font-size: 0.8rem; color: var(--dim); max-width: 32ch; }
+.checkout-modal-success .btn { width: 100%; margin-top: 0.4rem; }
 
 /* =============================================================
    13. FAQ

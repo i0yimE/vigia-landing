@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=20260722" />
+  <link rel="stylesheet" href="styles.css?v=20260723" />
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -566,37 +566,97 @@ log.<span class="tk-f">info</span>(<span class="tk-s">"pago procesado"</span>, {
 
   <!-- ============================ CHECKOUT (simulado) ============================ -->
   <dialog class="checkout-modal" data-checkout-modal aria-labelledby="checkout-modal-title">
-    <form class="checkout-modal-form" data-checkout-form>
+    <p class="checkout-sim-badge">Modo simulación — sin cobros reales</p>
+
+    <form class="checkout-modal-form" data-checkout-form novalidate>
       <div class="checkout-modal-head">
         <h3 id="checkout-modal-title">Probar Vigía Pro</h3>
         <button type="button" class="checkout-modal-close" data-checkout-close aria-label="Cerrar">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
       </div>
+
       <div class="checkout-modal-body">
         <p class="checkout-plan-summary" data-checkout-summary>Plan Pro · US$29/usuario/mes · 14 días gratis</p>
-        <label>Nombre en la tarjeta
-          <input type="text" placeholder="Nombre Apellido" autocomplete="off" required />
-        </label>
-        <label>Número de tarjeta
-          <input type="text" placeholder="4242 4242 4242 4242" inputmode="numeric" maxlength="19" autocomplete="off" data-cc-number required />
-        </label>
-        <div class="checkout-modal-row">
-          <label>Vencimiento
-            <input type="text" placeholder="MM/AA" maxlength="5" autocomplete="off" required />
-          </label>
-          <label>CVC
-            <input type="text" placeholder="123" maxlength="4" inputmode="numeric" autocomplete="off" required />
-          </label>
+
+        <div class="cc-preview" data-cc-preview>
+          <div class="cc-face cc-front">
+            <span class="cc-brand-label" data-cc-brand-label>Tarjeta</span>
+            <span class="cc-chip" aria-hidden="true"></span>
+            <div class="cc-number-line" data-cc-preview-number>•••• •••• •••• ••••</div>
+            <div class="cc-bottom-row">
+              <div>
+                <span class="cc-mini-label">Titular</span>
+                <div class="cc-holder-name" data-cc-preview-name>NOMBRE APELLIDO</div>
+              </div>
+              <div>
+                <span class="cc-mini-label">Vence</span>
+                <div data-cc-preview-exp>MM/AA</div>
+              </div>
+            </div>
+          </div>
+          <div class="cc-face cc-back">
+            <span class="cc-stripe" aria-hidden="true"></span>
+            <div class="cc-cvc-box">
+              <span class="cc-mini-label">CVC</span>
+              <span data-cc-preview-cvc>•••</span>
+            </div>
+          </div>
         </div>
-        <p class="checkout-modal-disclaimer">Simulación de demo: no se procesa ningún pago real ni se guarda ningún dato. Podés escribir cualquier valor.</p>
+
+        <div class="checkout-field">
+          <label for="cc-name">Nombre en la tarjeta</label>
+          <input id="cc-name" type="text" placeholder="Nombre Apellido" autocomplete="off" data-cc-name required />
+          <span class="field-error" data-error-name hidden></span>
+        </div>
+
+        <div class="checkout-field">
+          <label for="cc-number">Número de tarjeta</label>
+          <div class="input-with-icon">
+            <input id="cc-number" type="text" placeholder="4242 4242 4242 4242" inputmode="numeric" maxlength="23" autocomplete="off" data-cc-number required />
+            <svg class="cc-brand-icon" data-cc-brand-icon width="28" height="18" viewBox="0 0 28 18" aria-hidden="true"><rect width="28" height="18" rx="3" fill="currentColor" opacity="0.14"/></svg>
+          </div>
+          <span class="field-error" data-error-number hidden></span>
+        </div>
+
+        <div class="checkout-modal-row">
+          <div class="checkout-field">
+            <label for="cc-exp">Vencimiento</label>
+            <input id="cc-exp" type="text" placeholder="MM/AA" maxlength="5" inputmode="numeric" autocomplete="off" data-cc-exp required />
+            <span class="field-error" data-error-exp hidden></span>
+          </div>
+          <div class="checkout-field">
+            <label for="cc-cvc">CVC</label>
+            <input id="cc-cvc" type="text" placeholder="123" maxlength="4" inputmode="numeric" autocomplete="off" data-cc-cvc required />
+            <span class="field-error" data-error-cvc hidden></span>
+          </div>
+        </div>
+
+        <p class="checkout-modal-disclaimer">Simulación de demo: no se procesa ningún pago real ni se guarda ningún dato. Probala con la tarjeta de prueba <code>4242 4242 4242 4242</code>.</p>
       </div>
-      <button type="submit" class="btn btn-primary" data-checkout-submit>Confirmar prueba gratuita</button>
+
+      <button type="submit" class="btn btn-primary" data-checkout-submit>
+        <span data-submit-label>Confirmar prueba gratuita</span>
+      </button>
     </form>
+
     <div class="checkout-modal-success" data-checkout-success hidden>
-      <div class="checkout-success-icon">✓</div>
+      <div class="checkout-success-icon">
+        <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+          <circle cx="15" cy="15" r="13" fill="none" stroke="currentColor" stroke-width="2" class="success-ring" />
+          <path d="M9 15.5l4 4 8-8.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="success-check" />
+        </svg>
+      </div>
       <h3>Tu prueba de 14 días está activada</h3>
-      <p>Es una simulación de demo — no se realizó ningún cargo ni se guardó ningún dato.</p>
+
+      <div class="checkout-receipt">
+        <div class="receipt-row"><span>Plan</span><strong>Vigía Pro</strong></div>
+        <div class="receipt-row"><span>Ciclo</span><strong data-receipt-cycle>Mensual</strong></div>
+        <div class="receipt-row"><span>Cobro tras el trial</span><strong data-receipt-amount>US$29/mes</strong></div>
+        <div class="receipt-row"><span>Tarjeta</span><strong data-receipt-card>···· ····</strong></div>
+      </div>
+
+      <p class="checkout-sim-note">Simulación de demo — no se realizó ningún cargo ni se guardó ningún dato.</p>
       <button type="button" class="btn btn-ghost" data-checkout-done>Cerrar</button>
     </div>
   </dialog>
@@ -630,6 +690,6 @@ log.<span class="tk-f">info</span>(<span class="tk-s">"pago procesado"</span>, {
   <script defer src="lib/manifest.js?v=20260719"></script>
   <script defer src="main.js?v=20260719"></script>
   <script defer src="chat.js?v=20260719"></script>
-  <script defer src="checkout.js?v=20260722"></script>
+  <script defer src="checkout.js?v=20260723"></script>
 </body>
 </html>
